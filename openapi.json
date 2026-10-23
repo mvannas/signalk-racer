@@ -105,7 +105,7 @@
     "/signalk/v1/api/vessels/self/navigation/racing/setStartTime": {
       "put": {
         "summary": "Set, Adjust or Command the Timer",
-        "description": "Set start time or send commands to the timer ('start', 'reset', 'sync', or 'adjust').",
+        "description": "Set start time or send commands to the timer ('start', 'stop', 'reset', 'sync', or 'adjust'). 'stop' pauses the countdown and 'start' resumes it.",
         "requestBody": {
           "required": true,
           "content": {
@@ -115,7 +115,7 @@
                 "properties": {
                   "command": {
                     "type": "string",
-                    "enum": ["start", "reset", "sync", "adjust", "set"]
+                    "enum": ["start", "stop", "reset", "sync", "adjust", "set"]
                   },
                   "delta": { "type": "number", "description": "Time offset in seconds (for adjust)" },
                   "startTime": { "type": "string", "format": "date-time", "description": "ISO start time (for set)" }
