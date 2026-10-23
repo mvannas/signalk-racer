@@ -241,12 +241,12 @@ An absolute value may also be put directly to `navigation.racing.bestVmg.<name>`
 
 ### `navigation.racing.setStartTime`
 
-Used to **start**, **sync**, **reset**, or **set a fixed start time**.
+Used to **start**, **stop**, **sync**, **reset**, or **set a fixed start time**. `stop` pauses the countdown; `start` resumes it from the time left.
 
 #### Payload:
 ```
 {
-  "command": "start" | "reset" | "sync" | "adjust" | "set",
+  "command": "start" | "stop" | "reset" | "sync" | "adjust" | "set",
   "delta": 30,
   "startTime": "2025-06-18T04:15:00Z"
 }

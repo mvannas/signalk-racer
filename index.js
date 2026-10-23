@@ -850,6 +850,19 @@ module.exports = (app) => {
                     return complete(callback, 200, 'reset timer: OK');
                 }
 
+                case 'stop': {
+                    // Pause the countdown; 'start' resumes from where it stopped.
+                    state.timerRunning = false;
+                    if (state.timerInterval) clearInterval(state.timerInterval);
+                    state.startTime = null;
+
+                    sendDeltas([
+                        {path: 'navigation.racing.timeToStart', value: state.timeToStart},
+                        {path: 'navigation.racing.startTime', value: null}
+                    ]);
+                    return complete(callback, 200, 'stop timer: OK');
+                }
+
                 case 'sync': {
                     if (!state.timerRunning || state.timeToStart == null)
                         return complete(callback, 500, 'sync timer: !running');
